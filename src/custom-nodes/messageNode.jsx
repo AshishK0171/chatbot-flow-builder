@@ -18,7 +18,7 @@ export default function MessageNode({data}) {
         </div>
         <p id="text" name="text" onChange={onChange}>{data?.label || 'text message'}</p>
       </div>
-      <Handle type="source" position={Position.Right}/>
+      <CustomHandle type="source" position={Position.Right} isConnectable={1}/>
     </div>
   );
 }

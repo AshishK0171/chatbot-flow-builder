@@ -38,7 +38,7 @@ const onDragOver = useCallback((event) => {
         y: event.clientY,
       });
       const newNode = {
-        id: getId(),
+        id: getId(type),
         type,
         position,
         data: { label: 'text' },
@@ -65,6 +65,7 @@ const onDragOver = useCallback((event) => {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        onNodeClick={(e,n)=>console.log(n)}
         onInit={setReactFlowInstance}
         onDrop={onDrop}
         onDragOver={onDragOver}
