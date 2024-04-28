@@ -1,0 +1,24 @@
+.element-header{
+    margin: auto;
+}
+.element-header p{
+    text-align: center;
+}
+.element-editor{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.element-editor label{
+    color: rgb(212, 211, 211);
+}
+.element-editor textarea{
+    width: 90%;
+    height: 100px;
+    margin: 20px auto;
+    border: 1px solid rgb(212, 211, 211);
+    padding: 5px;
+}
+hr{
+    border:1px solid rgb(212, 211, 211);
+}

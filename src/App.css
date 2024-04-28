@@ -1,0 +1,28 @@
+.flow-container{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+.flow-space{
+    height: 100%;
+    width: 100%;
+    min-width: 300px;
+    flex: 1;
+}
+.side-bar {
+    border: 1px solid rgb(212, 211, 211);
+    flex-grow: 0;
+    min-width: 250px;
+    width:300px;
+    height: 100%;
+}
+
+@media (max-width:500px) {
+    .flow-container{
+        display: block;
+    }
+    .side-bar{
+        width: 100%;
+    }
+}

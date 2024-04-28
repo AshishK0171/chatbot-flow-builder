@@ -1,0 +1,40 @@
+.text-updater-node {
+    border: none;
+    min-height: 50px;
+    min-width: 250px;
+    border-radius: 5px;
+    background: white;
+    cursor: grab;
+    box-shadow: 5px 5px 15px #8e8e8e;
+  }
+  .text-updater-node:focus{
+    border: 2px solid blue;
+  }
+
+  .node-header{
+    padding: 5px;
+    border-radius: 5px 5px 0 0;
+    font-size: 12px;
+    background-color: hsl(169, 64%, 81%);
+    display: flex;
+    align-items: center;
+  }
+  .node-header label{
+    font-weight: bold;
+    margin-right: auto;
+    margin-left: 5px;
+  }
+  .indicator{
+    margin: 0;
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border: 4px solid white;
+    border-radius: 50%;
+  }
+  p#text{
+    margin: 0;
+    padding:15px 5px;
+  }
+  
+  

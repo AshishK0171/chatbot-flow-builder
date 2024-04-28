@@ -1,0 +1,14 @@
+.elements-panel{
+    padding: 10px;
+    display: flex;
+}
+
+.element {
+    min-width: 40%;
+    width: 50%;
+    text-align: center;
+    margin: 0 5px 5px 0;
+}
+.element:active{
+    opacity: 0.5;
+}
