@@ -1,11 +1,7 @@
-import { useCallback } from 'react';
 import { Handle, Position } from 'reactflow';
 import CustomHandle from '../custom-handle/customHandle';
  
 export default function MessageNode({data}) {
-  const onChange = useCallback((evt) => {
-    console.log(evt.target.value);
-  }, []);
  
   return (
     <div className="text-updater-node" >
@@ -16,7 +12,7 @@ export default function MessageNode({data}) {
         <label htmlFor="text">Send Message</label>
         <p className='indicator'></p>
         </div>
-        <p id="text" name="text" onChange={onChange}>{data?.label || 'text message'}</p>
+        <p id="text" name="text" >{data?.label || 'text message'}</p>
       </div>
       <CustomHandle type="source" position={Position.Right} isConnectable={1}/>
     </div>

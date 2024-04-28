@@ -1,6 +1,7 @@
 import './elements.css';
 import nodeImg from './assets/message-node.png';
 export default function Elements(){
+    //add new node to this array, import it in flowCanvas.jsx
     const elementsData = [{id:1,type:'messageNode',name:'Message',src:nodeImg}];
     const onDragStarted = (event,nodeType)=>{
         event.dataTransfer.setData('chatflow/element',nodeType);

@@ -9,7 +9,7 @@ import Editor from './editor';
 import './editor.css'
 
 let id = 0;
-const getId = (type) => `node_${type || 'def'}_${id++}`;
+const getId = (type) => `node_${type || 'def'}_${id++}`;//should work within session
 const customNodeTypes = {messageNode:MessageNode};
 const defaultEdgeType = {markerEnd:{type:MarkerType.Arrow,width:20,height:20}};
 export default function FlowCanvas(){
@@ -49,14 +49,37 @@ const onDragOver = useCallback((event) => {
     [reactFlowInstance],
   );
   const onDataChanged = (newLabel,nodeData)=>{
-    console.log("New value");
-    console.log(nodeData);
     nodeData.data.label = newLabel;
-    console.log(nodes.filter((n)=>n.id===nodeData.id));
     setNodes(nodes.map(n=>n.id === nodeData.id? {...n, data:{...n.data,label : newLabel}}:n));
   }
+  const [workSpaceStatus, setWorkSpaceStatus] = useState(null);
+  let i = 0;
+  const nodeValidation = ()=>{
+    //get nodes with no edges
+    if(nodes.length < 2){
+        setWorkSpaceStatus('valid');
+        return;
+    }
+    const unconnectedNodes = nodes.filter(node => !edges.find(edge => edge.source === node.id || edge.target === node.id));
+    setWorkSpaceStatus(unconnectedNodes.length>0?'invalid':'valid');
+  }
+  useEffect(()=>{
+    if(workSpaceStatus){
+        setTimeout(()=>setWorkSpaceStatus(null),5000);//hide the alert
+    }
+  },[workSpaceStatus])
  return(
     <ReactFlowProvider>
+    <section className='flow-controls'>
+        {workSpaceStatus?
+            workSpaceStatus === 'invalid'?
+                <p className='alert alert-error'>Cannot Save Flow</p>:
+                <p className='alert alert-success'>Flow Saved</p>
+        :''}
+        <div className='save-btn'>
+            <button onClick={nodeValidation}>Save Changes</button>
+        </div>
+    </section>
     <div className='flow-container'>
     <main className='flow-space'>
     <ReactFlow nodeTypes={customNodeTypes}
@@ -65,7 +88,6 @@ const onDragOver = useCallback((event) => {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
-        onNodeClick={(e,n)=>console.log(n)}
         onInit={setReactFlowInstance}
         onDrop={onDrop}
         onDragOver={onDragOver}
@@ -89,10 +111,8 @@ function Sidebar({onDataChanged}){
   useOnSelectionChange({
     onChange: ({ nodes, edges }) => {
       setSelectedNodes(nodes.map((n)=>n));
-    //   console.log(selectedNodes);    
     },
   });
-  useEffect(()=>console.log(selectedNodes),[selectedNodes])
  
   return( 
       selectedNodes.length?<Editor selectedNodeData={selectedNodes} onDataChanged={onDataChanged}/>:<Elements/>

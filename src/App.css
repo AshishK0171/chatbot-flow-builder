@@ -2,7 +2,7 @@
     display: flex;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 90vh;
 }
 .flow-space{
     height: 100%;
@@ -17,6 +17,43 @@
     width:300px;
     height: 100%;
 }
+/* work-space controls */
+.flow-controls{
+    display: flex;
+    width: 100%;
+    padding: 10px 0;
+    background-color: hsl(0, 0%, 95%);
+}
+.flow-controls .save-btn{
+    min-width: 250px;
+    width:300px;
+    margin-left: auto;
+    text-align: center;
+}
+.flow-controls .save-btn button{
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid blue;
+    background-color: white;
+    color: blue;
+    box-shadow: 0 0 5px blue;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.flow-controls .alert{
+    margin: 0;
+    margin: auto;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 2s ease-in-out;
+}
+.flow-controls .alert-error{
+    background-color: rgb(255, 168, 168);
+}
+.flow-controls .alert-success{
+    background-color: rgb(136, 255, 182);
+}   
 
 @media (max-width:500px) {
     .flow-container{
